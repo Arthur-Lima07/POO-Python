@@ -8,11 +8,12 @@ class Shape(ABC):
         id = cls.__baseId
         cls.__baseId = cls.__baseId + 1
         return id
-    def __init__(self, x = 0 , y = 0 , radius = 1):
+    def __init__(self, x = 0 , y = 0 , radius = 1.0, angle = 0.0):
         self.__id = Shape._getNextId() # Acessa direto por ser propriedade somente-leitura
         self.x = x
         self.y = y
         self.radius = radius
+        self.angle = angle
     @property
     def id(self):
         return self.__id
@@ -50,7 +51,17 @@ class Shape(ABC):
         else:
             raise AttributeError('y must be positive')
 
-    @abstractmethod
+    @property
+    def angle(self):
+        return self.__angle
+    @angle.setter # Evita escrita de propriedade somente-leitura
+    def angle(self, value):
+        if isinstance(value, (int,float)) and value >= 0:
+            self.__angle = value
+        else:
+            raise AttributeError('angle must be positive')
+        
+    #@abstractmethod
     def area(self):
         pass
 
