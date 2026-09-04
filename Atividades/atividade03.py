@@ -35,7 +35,7 @@ class Shape(ABC):
         return self.__x
     @x.setter # Evita escrita de propriedade somente-leitura
     def x(self, value):
-        if isinstance(value, (int,float)) and value > 0:
+        if isinstance(value, (int,float)) and value >= 0:
             self.__x = value
         else:
             raise AttributeError('x must be positive')
@@ -45,7 +45,7 @@ class Shape(ABC):
         return self.__y
     @y.setter # Evita escrita de propriedade somente-leitura
     def y(self, value):
-        if isinstance(value, (int,float)) and value > 0:
+        if isinstance(value, (int,float)) and value >= 0:
             self.__y = value
         else:
             raise AttributeError('y must be positive')
@@ -63,10 +63,10 @@ class Square(Shape):
         return 2*self.radius**2
 
 class Pentagon(Shape):
-
+    pass
 
 class Hexagon(Shape):
-    
+    pass
 
 if __name__ == '__main__':
     t1 = Triangle(0, 1, 1)
@@ -83,16 +83,16 @@ if __name__ == '__main__':
     q3 = Square()
     print(f'q3.id: {q3.id}')
 
-    p1 = Square()
+    p1 = Pentagon()
     print(f'p1.id: {p1.id}')
-    p2 = Square()
+    p2 = Pentagon()
     print(f'p2.id: {p2.id}')
-    p3 = Square()
+    p3 = Pentagon()
     print(f'p3.id: {p3.id}')
 
-    h1 = Square()
+    h1 = Hexagon()
     print(f'h1.id: {h1.id}')
-    h2 = Square()
+    h2 = Hexagon()
     print(f'h2.id: {h2.id}')
-    h3 = Square()
+    h3 = Hexagon()
     print(f'h3.id: {h3.id}')
